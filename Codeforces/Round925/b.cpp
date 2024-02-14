@@ -20,46 +20,38 @@ using namespace std;
 #define PQmax priority_queue<int,vi>
 int const Inf=1e9;
 int const N=1e5+3;
-
+bool solve(){
+    int n;cin>>n;
+        vi a(n);
+        int sum=0;
+        rep(i,0,a.size()){
+            cin>>a[i];
+            sum+=a[i];
+        }
+        int wx=0;
+        int d=sum/n;
+        rep(i,0,n){
+            if(a[i]>(d)){
+                wx+=(a[i]-(d));
+            }else{
+                if(wx>= (d-a[i])){
+                    wx-=(d-a[i]);
+                }else{
+                    return false;
+                }
+            }
+        }
+        return true;
+}
 signed main()
 {
     int t;cin>>t;
     while(t--){
-        int n,m;cin>>n>>m;
-        vi a(n);
-        rep(i,0,a.size()){
-            cin>>a[i];
-        }
-        vi b(m);
-        rep(i,0,b.size()){
-            cin>>b[i];
-        }
-
-        Sort(a);
-        sort(rbegin(b),rend(b));
-
-        int s=0,e=m-1;
-
-        int sum=0,sum2=0;
-        rep(i,0,n){
-            sum+=
-        }
-
-        Sort(b);
-        s=0,e=m-1;
-        rep(i,0,n){
-            if(abs(a[i]-b[s])>abs(a[i]-b[e]) and s<e){
-                sum2+=abs(a[i]-b[s]);
-                s++;
-            }else{
-                sum2+=abs(a[i]-b[e]);
-                e--;
-            }
-        }
-
-
-        cout<<max(sum,sum2)<<endl;
-        
+          if(solve()){
+            cout<<"YES"<<endl;
+          }      else{
+            cout<<"NO"<<endl;
+          }
     }
 
     return 0;
