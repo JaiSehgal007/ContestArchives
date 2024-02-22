@@ -25,19 +25,21 @@ signed main()
 {
     int t;cin>>t;
     while(t--){
-        int n,x,y;cin>>n>>x>>y;
-        vi a(n);
-        rep(i,0,a.size()){
-            cin>>a[i];
+        int a,b,r,x=0,first_bit=1;cin>>a>>b>>r;
+        if(b>a)swap(b,a);
+        for(int i=59;i>=0;i--){
+            bool ab=(a>>i)&1ll;
+            bool bb=(b>>i)&1ll;
+            if(ab!=bb){
+                if(first_bit)first_bit=0;
+                else if(bb==0 and (x+(1ll<<i))<=r){
+                    x+=(1ll<<i);
+                    a^=(1ll<<i);
+                    b^=(1ll<<i);
+                }
+            }
         }
-        int ans=0;
-        map<vector<int>,int>cnt;
-        for(auto e:a){
-            int xx=e%x,yy=e%y;
-            ans+=cnt[{(x-xx)%x,yy}];
-            cnt[{xx,yy}]+=1;
-        }
-        cout<<ans<<endl;
+        cout<<a-b<<endl;
     }
 
     return 0;

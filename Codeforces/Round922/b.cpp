@@ -25,19 +25,18 @@ signed main()
 {
     int t;cin>>t;
     while(t--){
-        int n,x,y;cin>>n>>x>>y;
-        vi a(n);
+        int n;cin>>n;
+        vvi a(n,vi(2));
         rep(i,0,a.size()){
-            cin>>a[i];
+            cin>>a[i][0];
         }
-        int ans=0;
-        map<vector<int>,int>cnt;
-        for(auto e:a){
-            int xx=e%x,yy=e%y;
-            ans+=cnt[{(x-xx)%x,yy}];
-            cnt[{xx,yy}]+=1;
+        rep(i,0,a.size()){
+            cin>>a[i][1];
         }
-        cout<<ans<<endl;
+        sort(begin(a),end(a));
+        for(auto e:a)cout<<e[0]<<" ";
+        cout<<endl;for(auto e:a)cout<<e[1]<<" ";
+        cout<<endl;        
     }
 
     return 0;

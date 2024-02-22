@@ -25,19 +25,11 @@ signed main()
 {
     int t;cin>>t;
     while(t--){
-        int n,x,y;cin>>n>>x>>y;
-        vi a(n);
-        rep(i,0,a.size()){
-            cin>>a[i];
+        int n,m;cin>>n>>m;
+        if(m==1)cout<<-1<<endl;
+        else{
+            cout<<((int)(m/2))*n<<endl;
         }
-        int ans=0;
-        map<vector<int>,int>cnt;
-        for(auto e:a){
-            int xx=e%x,yy=e%y;
-            ans+=cnt[{(x-xx)%x,yy}];
-            cnt[{xx,yy}]+=1;
-        }
-        cout<<ans<<endl;
     }
 
     return 0;
